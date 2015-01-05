@@ -29,7 +29,8 @@
 
             this.myTodos.push({
                 'todotext': newtodotext,
-                'tags': newTags
+                'tags': newTags,
+                'timeStamp': new Date()
             });
             // Clean Form
             document.forms["todoForm"].reset();

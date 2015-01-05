@@ -43,6 +43,7 @@
                 <h4>
                     <button ng-click="todolist.deleteTodo(todo)" class="delete"><img src="img/delete-icon.png" /></button>
                     {{todo.todotext}}
+                    <small>{{todo.timeStamp}}</small>
                 </h4>
                 <blockquote ng-repeat="tag in todo.tags">
                     <a ng-click="todolist.showTagTodos(tag)"><b>#{{tag}}</b></a>
