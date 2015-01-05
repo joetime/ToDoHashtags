@@ -21,7 +21,7 @@
             for (var i = 0; i < inlineTagSearch.length; i++) {
                 var word = inlineTagSearch[i];
                 if (word[0] == '#') {
-                    word = word.substring(1); 
+                    word = word.substring(0); 
                     if (newTags.indexOf(word) < 0) // checks for duplicates
                         newTags.push(word.substring(1));
                 }
