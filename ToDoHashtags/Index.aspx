@@ -26,7 +26,7 @@
 
             <textarea id="todotext" name="todotext" ng-model="todolist.todotext" placeholder="What needs to be done?" required></textarea>
             <div>
-                <span style="color:red" ng-show="todoForm.todotext.$dirty && todoForm.todotext.$invalid">
+                <span style="color: red" ng-show="todoForm.todotext.$dirty && todoForm.todotext.$invalid">
                     <span ng-show="todoForm.todotext.$error.required">Please enter what needs to be done</span>
                 </span>
             </div>
@@ -36,22 +36,26 @@
             <input type="submit" value="Submit" />
 
         </form>
-
-        <!-- Lisitng of all todos -->
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="todo in todolist.myTodos track by $index">
-                <h4>
-                    {{todo.todotext}}
-                    <small class="pull-right">
-                        {{todo.timeStamp | date:'short'}} &nbsp;&nbsp;
+        <div style="text-align:right">
+            <a class="btn btn-default btn-small" href="#" ng-click="$$hideTags=!$$hideTags">toggle tags</a>
+            <br />
+            <br />
+        </div>
+        <div>
+            <!-- Lisitng of all todos -->
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="todo in todolist.myTodos track by $index">
+                    <h4>{{todo.todotext}}
+                    <small class="pull-right">{{todo.timeStamp | date:'short'}} &nbsp;&nbsp;
                         <i ng-click="todolist.deleteTodo(todo)" class="glyphicon glyphicon-remove btn btn-danger btn-xs"></i>
                     </small>
-                </h4>
-                <blockquote ng-repeat="tag in todo.tags">
-                    <a ng-click="todolist.showTagTodos(tag)"><b>#{{tag}}</b></a>
-                </blockquote>
-            </li>
-        </ul>
+                    </h4>
+                    <blockquote ng-repeat="tag in todo.tags" ng-show="!$$hideTags">
+                        <a ng-click="todolist.showTagTodos(tag)"><b>#{{tag}}</b></a>
+                    </blockquote>
+                </li>
+            </ul>
+        </div>
     </section>
 </body>
 </html>
