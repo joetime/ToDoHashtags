@@ -16,6 +16,17 @@
                 }
             }
 
+            // find and add any #inline tags
+            var inlineTagSearch = newtodotext.split(' ');
+            for (var i = 0; i < inlineTagSearch.length; i++) {
+                var word = inlineTagSearch[i];
+                if (word[0] == '#') {
+                    word = word.substring(1); 
+                    if (newTags.indexOf(word) < 0) // checks for duplicates
+                        newTags.push(word.substring(1));
+                }
+            }
+
             this.myTodos.push({
                 'todotext': newtodotext,
                 'tags': newTags
