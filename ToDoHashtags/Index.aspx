@@ -41,9 +41,11 @@
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="todo in todolist.myTodos track by $index">
                 <h4>
-                    <button ng-click="todolist.deleteTodo(todo)" class="delete"><img src="img/delete-icon.png" /></button>
                     {{todo.todotext}}
-                    <small class="pull-right">{{todo.timeStamp | date:'short'}}</small>
+                    <small class="pull-right">
+                        {{todo.timeStamp | date:'short'}} &nbsp;&nbsp;
+                        <i ng-click="todolist.deleteTodo(todo)" class="glyphicon glyphicon-remove btn btn-danger btn-xs"></i>
+                    </small>
                 </h4>
                 <blockquote ng-repeat="tag in todo.tags">
                     <a ng-click="todolist.showTagTodos(tag)"><b>#{{tag}}</b></a>
