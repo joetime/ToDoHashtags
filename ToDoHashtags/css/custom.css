@@ -30,12 +30,6 @@
     margin-right: auto;
 }
 
-.delete {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    background:none;
-}
 .ng-invalid.ng-dirty {
     border-color: #FA787E;
 }
