@@ -57,7 +57,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="angular.min.js" />
     <Content Include="css\hashtag.css" />
     <Content Include="package.json" />
     <None Include="Web.Debug.config">
