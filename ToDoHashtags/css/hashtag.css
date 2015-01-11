@@ -1,0 +1,7 @@
+﻿/* this makes the hashtags work better in the line of text */
+.hashtag {
+    padding: 1px;
+    font-weight: normal;
+    font-size: 90%;
+    background-color: #ddd;
+}

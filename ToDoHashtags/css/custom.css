@@ -1,4 +1,4 @@
-﻿#todoapp h1 {
+﻿/*#todoapp h1 {
     width: 100%;
     font-size: 70px;
     font-weight: bold;
@@ -11,11 +11,11 @@
     -ms-text-rendering: optimizeLegibility;
     -o-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
-}
+}*/
 
 #todosForm {
     margin: 20px auto;
-    max-width: 50%;
+    /*max-width: 50%;*/
     text-align: center;
 }
 

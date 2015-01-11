@@ -1,61 +1,97 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="ToDoHashtags.Index" %>
 
+<% bool bUseMinified = true; %>
+
 <!DOCTYPE html>
 <html ng-app="todos">
 <head>
-    <title>TO DO APP</title>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <title>TODO APP</title>
+    <% if (Request.IsLocal && !bUseMinified)
+       { %>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="css/hashtag.css" />
+    <% }
+       else
+       { %>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/build/app.css" />
+    <% } %>
 </head>
 <body>
 
     <!-- This must be present for the .net framework to work correctly -->
     <form id="form1" runat="server"></form>
 
-    <script type="text/javascript" src="angular.min.js"></script>
+
+    <% if (Request.IsLocal && !bUseMinified)
+       { %>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
     <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="js/highlightTagsFilter.js"></script>
     <script type="text/javascript" src="js/custom-jquery.js"></script>
+    <% }
+       else
+       { %>
+    <script type="text/javascript" src="js/build/vendor.js"></script>
+    <script type="text/javascript" src="js/build/app.min.js"></script>
+    <% } %>
 
-    <section id="todoapp" ng-controller="TodosController as todolist">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
 
-        <h1>todos</h1>
+                <section id="todoapp" ng-controller="TodosController as todolist">
 
-        <!-- Form to create a new todo -->
-        <form id="todosForm" name="todoForm" ng-submit="todoForm.$valid && todolist.addTodo()" novalidate>
+                    <h1>todos</h1>
 
-            <textarea id="todotext" name="todotext" ng-model="todolist.todotext" placeholder="What needs to be done?" required></textarea>
-            <div>
-                <span style="color: red" ng-show="todoForm.todotext.$dirty && todoForm.todotext.$invalid">
-                    <span ng-show="todoForm.todotext.$error.required">Please enter what needs to be done</span>
-                </span>
+                    <!-- Form to create a new todo -->
+                    <form id="todosForm" name="todoForm" ng-submit="todoForm.$valid && addTodo()" novalidate>
+
+                        <textarea id="todotext" name="todotext" ng-model="todotext" placeholder="What needs to be done?" required></textarea>
+                        <div>
+                            <span style="color: red" ng-show="todoForm.todotext.$dirty && todoForm.todotext.$invalid">
+                                <span ng-show="todoForm.todotext.$error.required">Please enter what needs to be done</span>
+                            </span>
+                        </div>
+                        <div id="tags">
+                        </div>
+                        <input type="button" id="addTag" value="Add Tag">
+                        <input type="submit" value="Submit" />
+
+                    </form>
+                    <div class="btn-group" style="text-align: right">
+                        <a class="btn btn-default btn-small" href="#" ng-click="$$hideTags=!$$hideTags">toggle tags</a>
+                        <a class="btn btn-default btn-small" href="#" ng-click="color()">color</a>
+                        <br />
+                        <br />
+                    </div>
+
+                    <div>
+                        <!-- Lisitng of all todos -->
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="todo in myTodos track by $index">
+                                <h4>
+                                    <span ng-bind-html="todo.todotext | highlightTags"></span>
+
+                                    <small class="pull-right">{{todo.timeStamp | date:'short'}} &nbsp;&nbsp;
+                            <i ng-click="deleteTodo(todo)" class="glyphicon glyphicon-remove btn btn-default btn-xs"></i>
+                                    </small>
+                                </h4>
+                                <blockquote ng-repeat="tag in todo.tags" ng-show="!$$hideTags">
+                                    <a ng-click="showTagTodos(tag)"><b>#{{tag}}</b></a>
+                                </blockquote>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
-            <div id="tags">
-            </div>
-            <input type="button" id="addTag" value="Add Tag">
-            <input type="submit" value="Submit" />
+        </div>
+    </div>
 
-        </form>
-        <div style="text-align:right">
-            <a class="btn btn-default btn-small" href="#" ng-click="$$hideTags=!$$hideTags">toggle tags</a>
-            <br />
-            <br />
-        </div>
-        <div>
-            <!-- Lisitng of all todos -->
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="todo in todolist.myTodos track by $index">
-                    <h4>{{todo.todotext}}
-                    <small class="pull-right">{{todo.timeStamp | date:'short'}} &nbsp;&nbsp;
-                        <i ng-click="todolist.deleteTodo(todo)" class="glyphicon glyphicon-remove btn btn-danger btn-xs"></i>
-                    </small>
-                    </h4>
-                    <blockquote ng-repeat="tag in todo.tags" ng-show="!$$hideTags">
-                        <a ng-click="todolist.showTagTodos(tag)"><b>#{{tag}}</b></a>
-                    </blockquote>
-                </li>
-            </ul>
-        </div>
-    </section>
 </body>
 </html>
