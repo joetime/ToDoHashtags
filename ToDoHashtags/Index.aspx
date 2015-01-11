@@ -48,7 +48,8 @@
                     <!-- Form to create a new todo -->
                     <form id="todosForm" name="todoForm" ng-submit="todoForm.$valid && addTodo()" novalidate>
 
-                        <textarea id="todotext" name="todotext" ng-model="todotext" placeholder="What needs to be done?" required></textarea>
+                        <textarea id="todotext" name="todotext" ng-model="todotext" placeholder="What needs to be done?" 
+                            required class="form-control"></textarea>
                         <div>
                             <span style="color: red" ng-show="todoForm.todotext.$dirty && todoForm.todotext.$invalid">
                                 <span ng-show="todoForm.todotext.$error.required">Please enter what needs to be done</span>
@@ -56,8 +57,8 @@
                         </div>
                         <div id="tags">
                         </div>
-                        <input type="button" id="addTag" value="Add Tag">
-                        <input type="submit" value="Submit" />
+                        <input type="button" id="addTag" value="Add Tag" class="btn btn-default">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
 
                     </form>
                     <div class="btn-group" style="text-align: right">

@@ -27,6 +27,9 @@ module.exports = function (grunt) {
             },
         },
         cssmin: {
+            options: {
+                separator: '\n'
+            },
             target: {
                 files: {
                     'dist/css/app.css': [
