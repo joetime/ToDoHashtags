@@ -14,8 +14,7 @@
     <% }
        else
        { %>
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/build/app.css" />
+    <link rel="stylesheet" type="text/css" href="dist/css/app.css" />
     <% } %>
 </head>
 <body>
@@ -24,8 +23,7 @@
     <form id="form1" runat="server"></form>
 
 
-    <% if (Request.IsLocal && !bUseMinified)
-       { %>
+    <% if (Request.IsLocal && !bUseMinified) { %>
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.js"></script>
@@ -34,11 +32,9 @@
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/highlightTagsFilter.js"></script>
     <script type="text/javascript" src="js/custom-jquery.js"></script>
-    <% }
-       else
-       { %>
-    <script type="text/javascript" src="js/build/vendor.js"></script>
-    <script type="text/javascript" src="js/build/app.min.js"></script>
+    <% } else { %>
+    <script type="text/javascript" src="dist/js/vendor.js"></script>
+    <script type="text/javascript" src="dist/js/app.min.js"></script>
     <% } %>
 
     <div class="container">

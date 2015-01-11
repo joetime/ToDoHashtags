@@ -58,7 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\hashtag.css" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="package.json" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="dist\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -86,9 +90,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="css\build\" />
+    <Folder Include="dist\css\" />
+    <Folder Include="dist\js\" />
     <Folder Include="img\" />
-    <Folder Include="js\build\" />
     <Folder Include="node_modules\" />
   </ItemGroup>
   <PropertyGroup>
