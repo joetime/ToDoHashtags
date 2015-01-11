@@ -58,11 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="angular.min.js" />
-    <Content Include="bootstrap\css\bootstrap-theme.css" />
-    <Content Include="bootstrap\css\bootstrap.css" />
-    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="bootstrap\js\bootstrap.js" />
-    <Content Include="bootstrap\js\npm.js" />
     <Content Include="css\build\app.css" />
     <Content Include="css\hashtag.css" />
     <Content Include="js\build\app.min.js" />
@@ -1799,9 +1794,6 @@
     <Content Include="node_modules\grunt-contrib-uglify\node_modules\maxmin\node_modules\gzip-size\node_modules\browserify-zlib\node_modules\pako\.ndocrc" />
     <Content Include="node_modules\grunt-contrib-uglify\node_modules\maxmin\node_modules\gzip-size\node_modules\browserify-zlib\node_modules\pako\.npmignore" />
     <Content Include="node_modules\grunt-contrib-uglify\node_modules\maxmin\node_modules\gzip-size\node_modules\browserify-zlib\node_modules\pako\.travis.yml" />
-    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
